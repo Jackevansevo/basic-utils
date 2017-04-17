@@ -13,6 +13,6 @@ install:
   - pip install coveralls
 script:
   - coverage run --branch -m pytest && coverage report -m
-  - python -m doctest simple_utils/*.py
+  - python -m doctest basic_utils/*.py
 after_success:
   coveralls
