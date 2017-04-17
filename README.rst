@@ -1,8 +1,8 @@
 .. image:: https://travis-ci.org/Jackevansevo/basic-utils.svg?branch=master
     :target: https://travis-ci.org/Jackevansevo/basic-utils
 
-.. image:: https://coveralls.io/repos/github/Jackevansevo/python-utils/badge.svg?branch=master
-    :target: https://coveralls.io/github/Jackevansevo/python-utils?branch=master
+.. image:: https://coveralls.io/repos/github/Jackevansevo/basic-utils/badge.svg?branch=master
+    :target: https://coveralls.io/github/Jackevansevo/basic-utils?branch=master
 
 .. image:: https://img.shields.io/pypi/pyversions/basic-utils.svg
     :target: https://pypi.python.org/pypi/basic-utils
