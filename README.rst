@@ -1,14 +1,11 @@
-.. image:: https://travis-ci.org/Jackevansevo/python-utils.svg?branch=master
-    :target: https://travis-ci.org/Jackevansevo/python-utils
+.. image:: https://travis-ci.org/Jackevansevo/basic-utils.svg?branch=master
+    :target: https://travis-ci.org/Jackevansevo/basic-utils
 
 .. image:: https://coveralls.io/repos/github/Jackevansevo/python-utils/badge.svg?branch=master
     :target: https://coveralls.io/github/Jackevansevo/python-utils?branch=master
 
-.. image:: https://img.shields.io/pypi/pyversions/simple-utils.svg
-    :target: https://pypi.python.org/pypi/simple-utils
-
-.. image:: https://readthedocs.org/projects/simple-python-utils/badge/?version=latest
-    :target: http://simple-python-utils.readthedocs.io/en/latest/?badge=latest
+.. image:: https://img.shields.io/pypi/pyversions/basic-utils.svg
+    :target: https://pypi.python.org/pypi/basic-utils
 
 ============
 Basic utils

@@ -29,7 +29,7 @@ project_root = os.path.dirname(cwd)
 # version is used
 sys.path.insert(0, project_root)
 
-import utils
+import basic_utils
 
 # -- General configuration ------------------------------------------------
 
@@ -41,13 +41,13 @@ import utils
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = ['sphinx.ext.autodoc',
-    'sphinx.ext.doctest',
-    'sphinx.ext.intersphinx',
-    'sphinx.ext.todo',
-    'sphinx.ext.coverage',
-    'sphinx.ext.ifconfig',
-    'sphinx.ext.viewcode',
-    'sphinx.ext.githubpages']
+              'sphinx.ext.doctest',
+              'sphinx.ext.intersphinx',
+              'sphinx.ext.todo',
+              'sphinx.ext.coverage',
+              'sphinx.ext.ifconfig',
+              'sphinx.ext.viewcode',
+              'sphinx.ext.githubpages']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -62,7 +62,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = 'python-utils'
+project = 'basic-utils'
 copyright = '2017, Jack Evans'
 author = 'Jack Evans'
 
@@ -172,8 +172,6 @@ texinfo_documents = [
      author, 'python-utils', 'One line description of project.',
      'Miscellaneous'),
 ]
-
-
 
 
 # Example configuration for intersphinx: refer to the Python standard library.
