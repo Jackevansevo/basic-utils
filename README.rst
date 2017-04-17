@@ -7,6 +7,10 @@
 .. image:: https://img.shields.io/pypi/pyversions/basic-utils.svg
     :target: https://pypi.python.org/pypi/basic-utils
 
+.. image:: https://readthedocs.org/projects/basic-utils/badge/?version=latest
+    :target: http://basic-utils.readthedocs.io/en/latest/?badge=latest
+    :alt: Documentation Status
+
 ============
 Basic utils
 ============
@@ -16,7 +20,7 @@ Useful utilities for Python 3.4+
 Documentation
 =============
 
-See available utilities by reading the docs here: `<http://simple-python-utils.readthedocs.io/en/latest/>`_
+See available utilities by reading the docs here: `<http://basic-utils.readthedocs.io/en/latest/?badge=latest>`_
 
 Installation
 =============
