@@ -1,7 +1,9 @@
 import pytest
 
 from basic_utils.helpers import (
+    uniq,
     butlast,
+    dedupe,
     dict_subset,
     first,
     flatten,
@@ -129,3 +131,20 @@ def test_get_in_dict(data, keys, expected):
 def test_set_in_dict(data, keys, value, expected):
     set_in_dict(data, keys, value)
     assert data == expected
+
+
+@pytest.mark.parametrize("data, expected", [
+    ([1, 2, 1, 2, 3, 3], [1, 2, 3]),
+])
+def test_uniq(data, expected):
+    """Tests that uniq removes duplicates from a sequence"""
+    assert uniq(data) == expected
+
+
+@pytest.mark.parametrize("data, key, expected", [
+    ([1, 5, 2, 1, 9, 1, 5, 10], None, [1, 5, 2, 9, 10]),
+    (["jack", "joe", "jay", "ian"], len, ["jack", "joe"])
+])
+def test_dedupe(data, key, expected):
+    """Tests that dedupe removes duplicates whilst preserving order"""
+    assert list(dedupe(data, key)) == expected

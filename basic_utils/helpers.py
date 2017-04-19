@@ -140,3 +140,28 @@ def set_in_dict(dict_in, keys, value):
     {'a': {'b': {'c': 10}}}
     """
     get_in_dict(dict_in, butlast(keys))[last(keys)] = value
+
+
+def uniq(seq):
+    """
+    Removes duplicates from a sequence
+
+    >>> uniq([1, 2, 1, 1, 2, 3])
+    [1, 2, 3]
+    """
+    return type(seq)(set(seq))
+
+
+def dedupe(items, key=None):
+    """
+    Removes duplicates from a sequence while maintaining order
+
+    >>> list(dedupe([1, 5, 2, 1, 9, 1, 5, 10]))
+    [1, 5, 2, 9, 10]
+    """
+    seen = set()
+    for item in items:
+        val = item if key is None else key(item)
+        if val not in seen:
+            yield item
+            seen.add(val)
