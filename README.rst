@@ -17,6 +17,9 @@ Basic utils
 
 Useful utilities for Python 3.4+
 
+
+Currently alpha, (so use at your own risk)
+
 Documentation
 =============
 
