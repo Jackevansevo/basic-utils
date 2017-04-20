@@ -5,6 +5,7 @@ from unittest.mock import patch, MagicMock, mock_open
 from basic_utils.core import (
     clear,
     getattrs,
+    identity,
     map_getattr,
     recursive_default_dict,
     rgetattr,
@@ -69,6 +70,14 @@ def test_recursive_default_dict():
     """
     my_dict = recursive_default_dict()
     assert isinstance(my_dict['random_key'], type(my_dict))
+
+
+@pytest.mark.parametrize("data", [
+    (10), ((10, 20)), (("Homer", "Marge"))
+])
+def test_identity(data):
+    """Tests that identity returns the same arguments as it was passed"""
+    assert identity(data) == data
 
 
 class TestRecursiveGettersAndSetters:

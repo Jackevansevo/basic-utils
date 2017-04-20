@@ -59,3 +59,14 @@ def rsetattr(obj, attr, val):
     """Sets a nested attribute within an object"""
     pre, _, post = attr.rpartition('.')
     return setattr(rgetattr(obj, pre) if pre else obj, post, val)
+
+
+def identity(*args):
+    """
+    Returns the same values passed as arguments
+
+    >>> identity(10, 20)
+    (10, 20)
+    """
+    first, *rest = args
+    return first if not rest else args
