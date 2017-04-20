@@ -165,3 +165,15 @@ def dedupe(items, key=None):
         if val not in seen:
             yield item
             seen.add(val)
+
+
+def prune_dict(d, key=lambda x: x is not None):
+    """
+    Returns new dictionary with key / values pairs filtered by key function.
+    Prunes None values by default
+
+    >>> d = {'Homer': 39, 'Marge': 36, 'Bart': 10}
+    >>> prune_dict(d, key=lambda x: x < 20)
+    {'Bart': 10}
+    """
+    return {k: v for k, v in d.items() if key(v)}

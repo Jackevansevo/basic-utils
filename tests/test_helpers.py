@@ -1,7 +1,6 @@
 import pytest
 
 from basic_utils.helpers import (
-    uniq,
     butlast,
     dedupe,
     dict_subset,
@@ -11,9 +10,11 @@ from basic_utils.helpers import (
     get_keys,
     last,
     partial_flatten,
+    prune_dict,
     rest,
     reverse,
     set_in_dict,
+    uniq,
 )
 
 
@@ -148,3 +149,11 @@ def test_uniq(data, expected):
 def test_dedupe(data, key, expected):
     """Tests that dedupe removes duplicates whilst preserving order"""
     assert list(dedupe(data, key)) == expected
+
+
+@pytest.mark.parametrize("args, expected", [
+    (({'Homer': 39, 'Marge': 36, 'Bart': 10}, lambda x: x < 20), {'Bart': 10}),
+    (({'a': None, 'b': 2, 'c': None},), {'b': 2})
+])
+def test_prune_dict(args, expected):
+    assert prune_dict(*args) == expected
