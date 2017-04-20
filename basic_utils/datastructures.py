@@ -104,12 +104,3 @@ class Node:
 
     def depth_first(self):
         return DepthFirstIterator(self)
-
-
-if __name__ == '__main__':
-    udo = Node('Udo')
-    marc = Node('Lian')
-    marc.add_child(Node('Jim'))
-    ian = Node('Ian')
-    udo.add_children((marc, ian))
-    print(udo.build_tree())
