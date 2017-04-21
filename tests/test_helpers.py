@@ -21,7 +21,6 @@ from basic_utils.helpers import (
 @pytest.mark.parametrize("data", [
     ([1, 2, 3]),
     ((1, 2, 3,)),
-    ((x for x in [1, 2, 3])),
     (range(1, 4)),
 ])
 def test_first(data):
@@ -32,7 +31,6 @@ def test_first(data):
 @pytest.mark.parametrize("data", [
     ([1, 2, 3]),
     ((1, 2, 3,)),
-    ((x for x in [1, 2, 3])),
     (range(1, 4)),
 ])
 def test_last(data):
@@ -44,7 +42,6 @@ def test_last(data):
     ([1, 2, 3], [2, 3]),
     ((1, 2, 3), (2, 3)),
     ((range(1, 4)), range(2, 4)),
-    ((x for x in [1, 2, 3]), (2, 3)),
 ])
 def test_rest(data, expected):
     """Tests that rest returns the remaining elements in a sequence"""
@@ -54,8 +51,7 @@ def test_rest(data, expected):
 @pytest.mark.parametrize("data, expected", [
     ([1, 2, 3], [1, 2]),
     ((1, 2, 3), (1, 2)),
-    (range(1, 4), range(1, 3)),
-    ((x for x in [1, 2, 3]), (1, 2))
+    (range(1, 4), range(1, 3))
 ])
 def test_butlast(data, expected):
     """Tests that butlast returns all but the last element in a sequence"""
@@ -67,8 +63,6 @@ def test_butlast(data, expected):
     ([1, 2, 3], [3, 2, 1]),
     ((1, 2, 3), (3, 2, 1)),
     (range(1, 4), range(3, 0, -1)),
-    ((x for x in [1, 2, 3]), (3, 2, 1)),
-    ((x for x in []), ())
 ])
 def test_reverse(data, expected):
     assert reverse(data) == expected
@@ -89,13 +83,13 @@ def test_flatten(data, expected):
 @pytest.mark.parametrize("data, expected", [
     ([[1], [2], [3]], [1, 2, 3]),
     ([[1, 2], [3, 4, 5]], [1, 2, 3, 4, 5]),
-    (((1, 2), (3,)), (1, 2, 3)),
+    (((1, 2), (3,)), [1, 2, 3]),
 ])
 def test_partial_flatten(data, expected):
     """
     Tests that partial_flatten returns a partially flattened version data
     """
-    assert partial_flatten(data) == expected
+    assert list(partial_flatten(data)) == expected
 
 
 @pytest.mark.parametrize("keys, expected, default", [

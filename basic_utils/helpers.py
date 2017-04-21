@@ -1,10 +1,10 @@
-from collections import deque, abc, Iterable
 from functools import reduce
 from itertools import chain
 from operator import getitem
+from typing import Sequence, Iterable, Any, Callable
 
 
-def first(seq):
+def first(seq: Sequence) -> Any:
     """
     Returns first element in a sequence.
 
@@ -14,70 +14,57 @@ def first(seq):
     return next(iter(seq))
 
 
-def rest(seq):
+def rest(seq: Sequence) -> Any:
     """
     Returns remaining elements in a sequence
 
     >>> rest([1, 2, 3])
     [2, 3]
     """
-    if isinstance(seq, (abc.Sequence, str)):
-        return seq[1:]
-    d = deque(seq)
-    d.popleft()
-    return tuple(d)
+    return seq[1:]
 
 
-def last(seq):
+def last(seq: Sequence) -> Any:
     """
     Returns the last item in a sequence
 
     >>> last([1, 2, 3])
     3
     """
-    if hasattr(seq, '__getitem__'):
-        return seq[-1]
-    return deque(iter(seq), maxlen=1).pop()
+    return seq[-1]
 
 
-def butlast(seq):
+def butlast(seq: Sequence) -> Any:
     """
     Returns an iterable of all but the last item in the sequence
 
     >>> butlast([1, 2, 3])
     [1, 2]
     """
-    if isinstance(seq, (abc.Sequence, str)):
-        return seq[:-1]
-    i = deque(seq)
-    i.pop()
-    return tuple(i)
+    return seq[:-1]
 
 
-def reverse(seq):
+def reverse(seq: Sequence) -> Sequence:
     """
     Returns a sequence of items in seq in reverse order
 
     >>> reverse([1, 2, 3])
     [3, 2, 1]
     """
-    try:
-        return seq[::-1]
-    except TypeError:
-        return tuple(y for y in reverse(list(seq)))
+    return seq[::-1]
 
 
-def partial_flatten(seq):
+def partial_flatten(seq: Iterable) -> Iterable:
     """
     Returns partially flattened version of seq
 
     >>> list(flatten([[1, 2, 3], [4, 5, 6]]))
     [1, 2, 3, 4, 5, 6]
     """
-    return type(seq)(chain.from_iterable(seq))
+    return chain.from_iterable(seq)
 
 
-def flatten(seq):
+def flatten(seq: Iterable) -> Iterable:
     """
     Returns a generator object which when evalutated
     returns a flatted version of seq
@@ -119,7 +106,7 @@ def dict_subset(d, keys, include_missing=True, default_key=None):
     return {k: v for k, v in new.items() if v}
 
 
-def get_in_dict(dict_in, keys):
+def get_in_dict(d, keys: Sequence[str]) -> Any:
     """
     Retrieve nested key from dictionary
 
@@ -127,10 +114,10 @@ def get_in_dict(dict_in, keys):
     >>> get_in_dict(d, ('a', 'b', 'c'))
     3
     """
-    return reduce(getitem, keys, dict_in)
+    return reduce(getitem, keys, d)
 
 
-def set_in_dict(dict_in, keys, value):
+def set_in_dict(d: dict, keys: Sequence[str], value) -> None:
     """
     Sets a value inside a nested dictionary
 
@@ -139,7 +126,7 @@ def set_in_dict(dict_in, keys, value):
     >>> d
     {'a': {'b': {'c': 10}}}
     """
-    get_in_dict(dict_in, butlast(keys))[last(keys)] = value
+    get_in_dict(d, butlast(keys))[last(keys)] = value
 
 
 def uniq(seq):
@@ -152,22 +139,22 @@ def uniq(seq):
     return type(seq)(set(seq))
 
 
-def dedupe(items, key=None):
+def dedupe(seq: Sequence, key=None):
     """
     Removes duplicates from a sequence while maintaining order
 
     >>> list(dedupe([1, 5, 2, 1, 9, 1, 5, 10]))
     [1, 5, 2, 9, 10]
     """
-    seen = set()
-    for item in items:
+    seen = set()  # type: set
+    for item in seq:
         val = item if key is None else key(item)
         if val not in seen:
             yield item
             seen.add(val)
 
 
-def prune_dict(d, key=lambda x: x is not None):
+def prune_dict(d: dict, key: Callable = lambda x: x is not None) -> dict:
     """
     Returns new dictionary with key / values pairs filtered by key function.
     Prunes None values by default

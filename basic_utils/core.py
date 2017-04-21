@@ -1,13 +1,19 @@
 from collections import defaultdict
 from functools import reduce
+from typing import List
 
 import operator
 import os
 
 sentinel = object()
 
+__all__ = [
+    'clear', 'getattrs', 'map_getattr', 'recursive_default_dict', 'rgetattr',
+    'rsetattr', 'slurp', 'to_string',
+]
 
-def slurp(fname):
+
+def slurp(fname: str) -> str:
     """
     Reads a file and all its contents, returns a single string
     """
@@ -16,14 +22,14 @@ def slurp(fname):
     return data
 
 
-def clear():
+def clear() -> None:
     """
     Clears the terminal screen from python, operating system agnostic
     """
     os.system('cls' if os.name == 'nt' else 'clear')
 
 
-def to_string(objects, sep=", "):
+def to_string(objects: List[object], sep: str = ", ") -> str:
     """
     Converts a list of objects into a single string
 
@@ -59,14 +65,3 @@ def rsetattr(obj, attr, val):
     """Sets a nested attribute within an object"""
     pre, _, post = attr.rpartition('.')
     return setattr(rgetattr(obj, pre) if pre else obj, post, val)
-
-
-def identity(*args):
-    """
-    Returns the same values passed as arguments
-
-    >>> identity(10, 20)
-    (10, 20)
-    """
-    first, *rest = args
-    return first if not rest else args
