@@ -100,13 +100,15 @@ def test_get_keys(keys, expected, default):
     assert get_keys({"a": 1, "b": 2}, keys, default) == expected
 
 
-@pytest.mark.parametrize("data, keys, expected, include_missing", [
-    ({'a': 1, 'b': 2, 'c': 3}, ("a", "b"), {'a': 1, 'b': 2}, True),
-    ({'a': 1, 'b': 2}, ("a", "b", "c"), {'a': 1, 'b': 2}, False),
-    ({'a': 1, 'b': 2}, ("a", "b", "c"), {'a': 1, 'b': 2, 'c': None}, True),
+@pytest.mark.parametrize("keys, expected, prune, default", [
+    (('a', 'b', 'c'), {'a': 1, 'b': 2, 'c': 3}, False, None),
+    (('a', 'b', 'z'), {'a': 1, 'b': 2}, True, None),
+    (('a', 'b', 'z'), {'a': 1, 'b': 2, 'z': None}, False, None),
+    (('a', 'b', 'z'), {'a': 1, 'b': 2, 'z': 'Missing'}, False, 'Missing'),
 ])
-def test_dict_subset(data, keys, expected, include_missing):
-    assert dict_subset(data, keys, include_missing) == expected
+def test_dict_subset(keys, expected, prune, default):
+    d = {'a': 1, 'b': 2, 'c': 3}
+    assert dict_subset(d, keys, prune, default) == expected
 
 
 @pytest.mark.parametrize("data, keys, expected", [

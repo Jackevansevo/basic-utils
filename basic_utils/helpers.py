@@ -117,7 +117,7 @@ def dict_subset(d: dict, keys, prune=False, default=None):
     """
     new = {k: d.get(k, default) for k in keys}
     if prune:
-        return prune(new)
+        return prune_dict(new)
     return new
 
 
