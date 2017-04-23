@@ -1,11 +1,12 @@
 import operator
 import os
 
+from itertools import chain
 from collections import defaultdict
 from functools import reduce
 from typing import List
 
-from .primitives import sentinel
+from basic_utils.primitives import sentinel
 
 
 __all__ = [
@@ -59,7 +60,7 @@ def recursive_default_dict():
 
 def rgetattr(obj: object, attrs: str, default=sentinel):
     """Get a nested attribute within an object"""
-    return reduce(getattr, [obj] + attrs.split('.'))
+    return reduce(getattr, chain([obj], attrs.split('.')))
 
 
 def rsetattr(obj, attr, val):
