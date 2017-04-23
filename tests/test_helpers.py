@@ -14,7 +14,6 @@ from basic_utils.helpers import (
     rest,
     reverse,
     set_in_dict,
-    uniq,
 )
 
 
@@ -126,14 +125,6 @@ def test_get_in_dict(data, keys, expected):
 def test_set_in_dict(data, keys, value, expected):
     set_in_dict(data, keys, value)
     assert data == expected
-
-
-@pytest.mark.parametrize("data, expected", [
-    ([1, 2, 1, 2, 3, 3], [1, 2, 3]),
-])
-def test_uniq(data, expected):
-    """Tests that uniq removes duplicates from a sequence"""
-    assert uniq(data) == expected
 
 
 @pytest.mark.parametrize("data, key, expected", [

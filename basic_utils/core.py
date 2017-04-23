@@ -1,11 +1,12 @@
+import operator
+import os
+
 from collections import defaultdict
 from functools import reduce
 from typing import List
 
-import operator
-import os
+from .primitives import sentinel
 
-sentinel = object()
 
 __all__ = [
     'clear', 'getattrs', 'map_getattr', 'recursive_default_dict', 'rgetattr',
@@ -56,7 +57,7 @@ def recursive_default_dict():
     return defaultdict(recursive_default_dict)
 
 
-def rgetattr(obj, attrs, default=sentinel):
+def rgetattr(obj: object, attrs: str, default=sentinel):
     """Get a nested attribute within an object"""
     return reduce(getattr, [obj] + attrs.split('.'))
 

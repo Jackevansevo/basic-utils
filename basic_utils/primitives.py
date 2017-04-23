@@ -3,6 +3,9 @@ from typing import Any
 __all__ = ['dec', 'even', 'identity', 'inc', 'odd']
 
 
+sentinel = object()
+
+
 def identity(x: Any) -> Any:
     """
     Returns the same values passed as arguments
@@ -16,6 +19,8 @@ def identity(x: Any) -> Any:
 
 def inc(x: int) -> int:
     """
+    Increments argument by 1
+
     >>> inc(10)
     11
     """
@@ -24,6 +29,8 @@ def inc(x: int) -> int:
 
 def dec(x: int) -> int:
     """
+    Decrements argument by 1
+
     >>> dec(5)
     4
     """
@@ -32,6 +39,7 @@ def dec(x: int) -> int:
 
 def even(x: int) -> bool:
     """
+    Returns True if something
     >>> even(2)
     True
     """

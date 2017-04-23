@@ -17,3 +17,10 @@ Helpers
 
 .. automodule:: basic_utils.helpers
    :members:
+
+
+Primitives
+========================================
+
+.. automodule:: basic_utils.primitives
+   :members:
