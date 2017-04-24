@@ -166,7 +166,7 @@ def set_in_dict(d: dict, keys: Sequence[str], value) -> None:
     get_in_dict(d, butlast(keys))[last(keys)] = value
 
 
-def prune_dict(d: dict, key: Callable = lambda x: x is not None) -> dict:
+def prune_dict(d: dict, key: Callable=lambda x: x is not None) -> dict:
     """
     Returns new dictionary with key / values pairs filtered by key function.
     Prunes None values by default
