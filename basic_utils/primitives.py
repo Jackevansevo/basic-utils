@@ -1,6 +1,10 @@
 from typing import Any
+from operator import not_
+from functools import reduce
 
-__all__ = ['dec', 'even', 'identity', 'inc', 'odd']
+__all__ = [
+    'complement', 'compose', 'dec', 'even', 'identity', 'inc', 'odd'
+]
 
 
 sentinel = object()
@@ -15,6 +19,14 @@ def identity(x: Any) -> Any:
     (10, 20)
     """
     return x
+
+
+def compose(*funcs):
+    return reduce(lambda f, g: lambda x: f(g(x)), funcs, lambda x: x)
+
+
+def complement(func):
+    return compose(not_, func)
 
 
 def inc(x: int) -> int:
