@@ -1,7 +1,13 @@
 from functools import reduce
 from itertools import chain
 from operator import getitem
-from typing import Any, Callable, Iterable, Sequence
+from typing import Any, Callable, Iterable, Sequence, Optional
+
+__all__ = [
+    'butlast', 'cons', 'concat', 'dedupe', 'dict_subset', 'first', 'flatten',
+    'get_keys', 'getitem', 'head', 'init', 'last', 'partial_flatten', 'prune',
+    'prune_dict', 'rest', 'reverse', 'set_in_dict', 'tail',
+]
 
 
 def first(seq: Iterable) -> Any:
