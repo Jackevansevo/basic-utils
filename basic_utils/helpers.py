@@ -176,3 +176,10 @@ def prune_dict(d: dict, key: Callable=lambda x: x is not None) -> dict:
     {'Bart': 10}
     """
     return {k: v for k, v in d.items() if key(v)}
+
+
+# Define some common aliases
+head = first
+tail = rest
+init = butlast
+concat = chain
