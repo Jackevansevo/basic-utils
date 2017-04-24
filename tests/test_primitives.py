@@ -4,8 +4,6 @@ from basic_utils.primitives import (
     complement, compose, dec, even, identity, inc, odd
 )
 
-from basic_utils.helpers import rpartial
-
 
 @pytest.mark.parametrize("data", [
     (10), ((10, 20)), (("Homer", "Marge"))
