@@ -60,6 +60,22 @@ def reverse(seq: Sequence) -> Sequence:
     return seq[::-1]
 
 
+def cons(item: Any, seq: Sequence) -> chain:
+    """ Adds item to beginning of sequence.
+
+    >>> list(cons(1, [2, 3]))
+    [1, 2, 3]
+    """
+    return chain([item], seq)
+
+
+def prune(i, key: Optional[Callable]=None):
+    """
+    Filter an element on truthy values
+    """
+    return filter(key, i)
+
+
 def flatten(seq: Iterable) -> Iterable:
     """
     Returns a generator object which when evalutated
