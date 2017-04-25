@@ -1,9 +1,9 @@
-import operator
 import os
 
 from itertools import chain
 from collections import defaultdict
-from functools import reduce
+from operator import attrgetter
+from functools import reduce, partial
 from typing import List
 
 from basic_utils.primitives import sentinel
@@ -38,19 +38,19 @@ def to_string(objects: List[object], sep: str = ", ") -> str:
     >>> to_string([1, 2, 3])
     '1, 2, 3'
     """
-    return sep.join([(str(obj)) for obj in objects])
+    return sep.join(map(str, objects))
 
 
 def getattrs(obj, keys):
     """Supports getting multiple attributes from a model at once"""
-    return tuple(getattr(obj, k) for k in keys)
+    return tuple(map(partial(getattr, obj), keys))
 
 
 def map_getattr(attr, object_seq):
     """
     Returns a map to retrieve a single attribute from a sequence of objects
     """
-    return tuple(map(operator.attrgetter(attr), object_seq))
+    return tuple(map(attrgetter(attr), object_seq))
 
 
 def recursive_default_dict():
