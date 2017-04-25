@@ -69,13 +69,6 @@ def cons(item: Any, seq: Sequence) -> chain:
     return chain([item], seq)
 
 
-def prune(i, key: Optional[Callable]=None):
-    """
-    Filter an element on truthy values
-    """
-    return filter(key, i)
-
-
 def flatten(seq: Iterable) -> Iterable:
     """
     Returns a generator object which when evalutated
