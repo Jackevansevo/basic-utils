@@ -1,9 +1,9 @@
 import os
 
-from itertools import chain
 from collections import defaultdict
-from operator import attrgetter
 from functools import reduce, partial
+from itertools import chain
+from operator import attrgetter
 from typing import List
 
 from basic_utils.primitives import sentinel
