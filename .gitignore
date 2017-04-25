@@ -103,3 +103,4 @@ tags
 
 # PyPi conf
 .pypirc
+.mypy_cache/
