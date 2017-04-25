@@ -161,7 +161,7 @@ def set_in_dict(d: dict, keys: Sequence[str], value) -> None:
 
 def prune_dict(d: dict, key: Callable=lambda x: x is not None) -> dict:
     """
-    Returns new dictionary with key / values pairs filtered by key function.
+    Returns new dictionary with values filtered by key fn.
     Prunes None values by default
 
     >>> d = {'Homer': 39, 'Marge': 36, 'Bart': 10}
