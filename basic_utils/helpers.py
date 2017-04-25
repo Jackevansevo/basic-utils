@@ -10,7 +10,7 @@ __all__ = [
 ]
 
 
-def first(seq: Iterable) -> Any:
+def first(seq: Sequence) -> Any:
     """
     Returns first element in a sequence.
 
