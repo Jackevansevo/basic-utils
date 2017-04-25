@@ -12,7 +12,7 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
 
 setup(
     name='basic_utils',
-    version='0.4.0',
+    version='1.4.0',
     description='A simple set of Python utils',
     long_description=long_description,
     url='https://github.com/Jackevansevo/basic-utils',
