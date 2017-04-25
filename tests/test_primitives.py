@@ -1,7 +1,7 @@
-import pytest
+import pytest  # type: ignore
 
 from basic_utils.primitives import (
-    complement, compose, dec, even, identity, inc, odd
+    complement, comp, dec, even, identity, inc, odd
 )
 
 
@@ -13,9 +13,9 @@ def test_identity(data):
     assert identity(data) == data
 
 
-def test_compose():
-    assert compose(complement, even)(3)
-    assert compose(complement, odd)(2)
+def test_comp():
+    assert comp(complement, even)(3)
+    assert comp(complement, odd)(2)
 
 
 def test_complement():
