@@ -1,4 +1,4 @@
-import pytest
+import pytest  # type: ignore
 
 from basic_utils.helpers import (
     butlast,
@@ -11,7 +11,6 @@ from basic_utils.helpers import (
     get_keys,
     last,
     partial_flatten,
-    prune,
     prune_dict,
     rest,
     reverse,
@@ -146,14 +145,6 @@ def test_dedupe(data, key, expected):
 ])
 def test_prune_dict(args, expected):
     assert prune_dict(*args) == expected
-
-
-@pytest.mark.parametrize("data, key, expected", [
-    ([1, None, 2, None, 3], None, [1, 2, 3]),
-    ([1, 2, 3, 4], lambda x: x >= 3, [3, 4]),
-])
-def test_prune(data, key, expected):
-    assert type(expected)(prune(data, key)) == expected
 
 
 @pytest.mark.parametrize("data, expected", [
