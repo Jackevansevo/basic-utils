@@ -1,6 +1,7 @@
 import os
 
 from collections import defaultdict
+from datetime import timedelta
 from functools import reduce, partial
 from itertools import chain
 from operator import attrgetter
@@ -67,3 +68,10 @@ def rsetattr(obj, attr, val):
     """Sets a nested attribute within an object"""
     pre, _, post = attr.rpartition('.')
     return setattr(rgetattr(obj, pre) if pre else obj, post, val)
+
+
+def dates_between(start, end):
+    """Returns lazy sequence of dates between a start/end point"""
+    while start <= end:
+        yield start
+        start += timedelta(days=1)
