@@ -1,0 +1,12 @@
+#!/bin/sh -e
+
+export PREFIX=""
+if [ -d 'venv' ] ; then
+    export PREFIX="venv/bin/"
+fi
+
+set -x
+
+${PREFIX}flake8 basic_utils tests
+${PREFIX}isort basic_utils tests --recursive --check-only
+${PREFIX}mypy basic_utils tests --ignore-missing-imports

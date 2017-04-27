@@ -12,7 +12,7 @@ install:
   - pip install -r requirements.txt
   - pip install coveralls
 script:
-  - mypy basic_utils
+  - scripts/lint
   - coverage run --branch -m pytest && coverage report -m
   - python -m doctest basic_utils/[a-zA-Z]*.py
 after_success:
