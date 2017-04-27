@@ -20,6 +20,16 @@ def first(seq: Sequence) -> Any:
     return next(iter(seq))
 
 
+def second(seq: Sequence) -> Any:
+    """
+    Returns second element in a sequence.
+
+    >>> second([1, 2, 3])
+    2
+    """
+    return seq[1]
+
+
 def last(seq: Sequence) -> Any:
     """
     Returns the last item in a Sequence
