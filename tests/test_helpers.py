@@ -2,8 +2,8 @@ import pytest  # type: ignore
 
 from basic_utils.helpers import (
     butlast,
-    dedupe,
     cons,
+    dedupe,
     dict_subset,
     first,
     flatten,
@@ -14,7 +14,7 @@ from basic_utils.helpers import (
     prune_dict,
     rest,
     reverse,
-    set_in_dict,
+    set_in_dict
 )
 
 

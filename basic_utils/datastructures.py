@@ -1,5 +1,6 @@
-from collections import namedtuple
 import weakref
+
+from collections import namedtuple
 
 Branch = namedtuple('Branch', 'obj, value')
 

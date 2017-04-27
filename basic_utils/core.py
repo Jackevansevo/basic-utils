@@ -1,13 +1,11 @@
 import os
-
 from collections import defaultdict
-from functools import reduce, partial
+from functools import partial, reduce
 from itertools import chain
 from operator import attrgetter
 from typing import List
 
 from basic_utils.primitives import sentinel
-
 
 __all__ = [
     'clear', 'getattrs', 'map_getattr', 'recursive_default_dict', 'rgetattr',

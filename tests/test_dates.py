@@ -1,7 +1,7 @@
 from datetime import datetime
 from itertools import starmap
 
-from basic_utils.dates import dates_between, date_ranges_overlap
+from basic_utils.dates import date_ranges_overlap, dates_between
 
 
 def test_dates_between():

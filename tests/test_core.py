@@ -1,6 +1,6 @@
-import pytest  # type: ignore
+from unittest.mock import MagicMock, mock_open, patch
 
-from unittest.mock import patch, MagicMock, mock_open
+import pytest  # type: ignore
 
 from basic_utils.core import (
     clear,
@@ -10,7 +10,7 @@ from basic_utils.core import (
     rgetattr,
     rsetattr,
     slurp,
-    to_string,
+    to_string
 )
 
 

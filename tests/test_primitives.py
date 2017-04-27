@@ -1,7 +1,13 @@
 import pytest  # type: ignore
 
 from basic_utils.primitives import (
-    complement, comp, dec, even, identity, inc, odd
+    comp,
+    complement,
+    dec,
+    even,
+    identity,
+    inc,
+    odd
 )
 
 
