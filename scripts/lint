@@ -10,3 +10,4 @@ set -x
 ${PREFIX}flake8 basic_utils tests
 ${PREFIX}isort basic_utils tests --recursive --check-only
 ${PREFIX}mypy basic_utils tests --ignore-missing-imports
+${PREFIX}python -m doctest basic_utils/[a-zA-Z]*.py

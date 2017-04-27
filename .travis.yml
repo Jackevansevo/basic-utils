@@ -12,8 +12,6 @@ install:
   - pip install -r requirements.txt
   - pip install coveralls
 script:
-  - scripts/lint
-  - coverage run --branch -m pytest && coverage report -m
-  - python -m doctest basic_utils/[a-zA-Z]*.py
+  - scripts/ci
 after_success:
   coveralls
