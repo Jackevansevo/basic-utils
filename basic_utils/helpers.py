@@ -1,7 +1,7 @@
 from functools import reduce
 from itertools import chain
 from operator import getitem
-from typing import Any, Callable, Iterable, Sequence
+from typing import Any, Callable, Iterable, Sequence, Tuple
 
 __all__ = [
     'butlast', 'concat', 'cons', 'dedupe', 'dict_subset', 'first', 'flatten',
@@ -104,7 +104,7 @@ def partial_flatten(seq: Iterable) -> Iterable:
     return chain.from_iterable(seq)
 
 
-def dedupe(seq: Sequence, key=None):
+def dedupe(seq: Sequence, key: Callable=None) -> Iterable:
     """
     Removes duplicates from a sequence while maintaining order
 
@@ -119,7 +119,7 @@ def dedupe(seq: Sequence, key=None):
             seen.add(val)
 
 
-def get_keys(obj, keys, default=None):
+def get_keys(d: dict, keys: Sequence[str], default: Callable=None) -> Tuple:
     """
     Returns multiple values for keys in a dictionary
 
@@ -129,10 +129,11 @@ def get_keys(obj, keys, default=None):
     >>> get_keys(d, ('x', 'y', 'z'))
     (24, 25, None)
     """
-    return tuple(obj.get(key, default) for key in keys)
+    return tuple(d.get(key, default) for key in keys)
 
 
-def dict_subset(d: dict, keys, prune=False, default=None):
+def dict_subset(d, keys, prune=False, default=None):
+    # type: (dict, Sequence[str], bool, Callable) -> dict
     """
     Returns a new dictionary with a subset of key value pairs from the original
 
@@ -157,7 +158,7 @@ def get_in_dict(d: dict, keys: Sequence[str]) -> Any:
     return reduce(getitem, keys, d)
 
 
-def set_in_dict(d: dict, keys: Sequence[str], value) -> None:
+def set_in_dict(d: dict, keys: Sequence[str], value: Any) -> None:
     """
     Sets a value inside a nested dictionary
 

@@ -1,11 +1,9 @@
 import os
 from collections import defaultdict
-from functools import partial, reduce
+from functools import reduce
 from itertools import chain
 from operator import attrgetter
-from typing import List
-
-from basic_utils.primitives import sentinel
+from typing import Any, List, Sequence, Tuple
 
 __all__ = [
     'clear', 'getattrs', 'map_getattr', 'recursive_default_dict', 'rgetattr',
@@ -39,29 +37,29 @@ def to_string(objects: List[object], sep: str = ", ") -> str:
     return sep.join(map(str, objects))
 
 
-def getattrs(obj, keys):
+def getattrs(obj: object, keys: Sequence[str]) -> Tuple[Any, ...]:
     """Supports getting multiple attributes from a model at once"""
-    return tuple(map(partial(getattr, obj), keys))
+    return tuple(getattr(obj, key) for key in keys)
 
 
-def map_getattr(attr, object_seq):
+def map_getattr(attr: str, object_seq: Sequence[object]) -> Tuple[Any, ...]:
     """
     Returns a map to retrieve a single attribute from a sequence of objects
     """
     return tuple(map(attrgetter(attr), object_seq))
 
 
-def recursive_default_dict():
+def recursive_default_dict() -> defaultdict:
     """Returns a default dict that points to itself"""
     return defaultdict(recursive_default_dict)
 
 
-def rgetattr(obj: object, attrs: str, default=sentinel):
+def rgetattr(obj: object, attrs: str) -> Any:
     """Get a nested attribute within an object"""
     return reduce(getattr, chain([obj], attrs.split('.')))
 
 
-def rsetattr(obj, attr, val):
+def rsetattr(obj: object, attr: str, val: Any) -> None:
     """Sets a nested attribute within an object"""
     pre, _, post = attr.rpartition('.')
     return setattr(rgetattr(obj, pre) if pre else obj, post, val)

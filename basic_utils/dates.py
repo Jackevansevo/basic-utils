@@ -1,15 +1,13 @@
 from datetime import datetime, timedelta
 from itertools import starmap
-from typing import Iterator, NamedTuple, NewType, Tuple
+from typing import Iterator, NamedTuple, Tuple
 
 __all__ = ['dates_between', 'date_ranges_overlap']
 
 
-DatePair = NewType('DatePair', Tuple[datetime, datetime])
+DatePair = Tuple[datetime, datetime]
 
 DateRange = NamedTuple('DateRange', [('start', datetime), ('end', datetime)])
-
-# [TODO] Document functions
 
 
 def dates_between(start: datetime, end: datetime) -> Iterator[datetime]:

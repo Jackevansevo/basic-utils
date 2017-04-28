@@ -1,6 +1,6 @@
 import weakref
-
 from collections import namedtuple
+from typing import Any, Callable, Iterable, List, Optional
 
 Branch = namedtuple('Branch', 'obj, value')
 
@@ -17,18 +17,18 @@ class DepthFirstIterator(object):
         Derived from Python Cookbook 3rd Edition by David Beazley
     """
 
-    def __init__(self, start_node):
+    def __init__(self, start_node: Any) -> None:
         self._node = start_node
         self._children_iter = None
         self._child_iter = None
 
-    def __iter__(self):
+    def __iter__(self) -> Any:
         return self
 
-    def __next__(self):
+    def __next__(self) -> Any:
         # Return myself if just started; create an iterator for children
         if self._children_iter is None:
-            self._children_iter = iter(self._node)
+            self._children_iter = iter(self._node)  # type: ignore
             return self._node
         # If processing a child, return its next item,
         elif self._child_iter:
@@ -44,10 +44,10 @@ class DepthFirstIterator(object):
             return next(self)
 
 
-def format_tree(node, prefix='', key=None):
+def format_tree(node: 'Node', prefix: str='', key: Callable=None) -> Iterable:
     children = node.children
 
-    def make_branch(s, v):
+    def make_branch(s: str, v: str) -> str:
         return ''.join([prefix, s, SIDE * 2, ' ', v])
 
     if children:
@@ -68,40 +68,43 @@ class Node:
         Derived from Python Cookbook 3rd Edition by David Beazley
     """
 
-    def __init__(self, value):
+    def __init__(self, value: Any) -> None:
         self.value = value
         self._parent = None
-        self._children = []
+        self._children = []  # type: List[Node]
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return 'Node({!r:})'.format(self.value)
 
     @property
-    def children(self):
+    def children(self) -> List['Node']:
         return self._children
 
     @property
-    def parent(self):
-        return self._parent if self._parent is None else self._parent()
+    def parent(self) -> Optional['Node']:
+        if self._parent is None:
+            return self._parent
+        else:
+            return self._parent()
 
     @parent.setter
-    def parent(self, node):
-        self._parent = weakref.ref(node)
+    def parent(self, node: 'Node') -> None:
+        self._parent = weakref.ref(node)  # type: ignore
 
-    def add_child(self, child):
+    def add_child(self, child: 'Node') -> None:
         self._children.append(child)
         child.parent = self
 
-    def add_children(self, children):
+    def add_children(self, children: Iterable['Node']) -> None:
         for child in children:
             self._children.append(child)
             child.parent = self
 
-    def __iter__(self):
+    def __iter__(self) -> Iterable['Node']:
         return iter(self._children)
 
-    def build_tree(self):
+    def build_tree(self) -> str:
         return "\n".join([self.value, "\n".join(format_tree(self))])
 
-    def depth_first(self):
+    def depth_first(self) -> 'DepthFirstIterator':
         return DepthFirstIterator(self)

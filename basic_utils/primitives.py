@@ -20,7 +20,7 @@ def identity(x: Any) -> Any:
     return x
 
 
-def comp(*funcs):
+def comp(*funcs: Callable) -> Callable:
     """
     Takes a set of functions and returns a fn that is the composition
     of those functions
