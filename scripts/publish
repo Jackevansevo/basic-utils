@@ -1,0 +1,18 @@
+#!/bin/sh -e
+
+export VERSION=`cat basic_utils/__init__.py | grep __version__ | sed "s/__version__ = //" | sed "s/'//g"`
+export PREFIX=""
+if [ -d 'venv' ] ; then
+    export PREFIX="venv/bin/"
+fi
+
+find basic_utils -type f -name "*.py[co]" -delete
+find basic_utils -type d -name __pycache__ -delete
+
+${PREFIX}python setup.py sdist upload
+
+rm -r dist
+
+echo "You probably want to also tag the version now:"
+echo "git tag -a ${VERSION} -m 'version ${VERSION}'"
+echo "git push --tags"
