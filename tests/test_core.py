@@ -40,21 +40,23 @@ def test_clear(platform: str, expected: str) -> None:
 
 def test_to_string() -> None:
     # Create two mock class instances which implement __str__
-    objectX = MagicMock(**{'__str__.return_value': 'Homer'})
-    objectY = MagicMock(**{'__str__.return_value': 'Bart'})
+    objectX, objectY = Mock(), Mock()
+    objectX.__str__ = Mock(return_value='Homer')  # type: ignore
+    objectY.__str__ = Mock(return_value='Bart')  # type: ignore
     assert to_string([objectX, objectY]) == "Homer, Bart"
     assert to_string([1, 2, 3]) == "1, 2, 3"
 
 
 def test_getattrs() -> None:
     # Create a single mock class instance with two sample attributes
-    mock_obj = Mock(forename='Homer', age=39)
+    mock_obj = Mock(forename='Homer', age=39)  # type: ignore
     assert getattrs(mock_obj, ('forename', 'age')) == ('Homer', 39)
 
 
 def test_map_getattr() -> None:
     # Create two mock class instances with a sample attribute
-    objectX, objectY = Mock(forename='Homer'), Mock(forename='Bart')
+    objectX = Mock(forename='Homer')  # type: ignore
+    objectY = Mock(forename='Bart')  # type: ignore
     assert map_getattr('forename', (objectX, objectY)) == ('Homer', 'Bart')
 
 
