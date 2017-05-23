@@ -6,7 +6,7 @@
 """
 
 from .core import *  # noqa
-from .dates import *  # noqa
+from .date_helpers import *  # noqa
 from .dict_helpers import *  # noqa
 from .primitives import *  # noqa
 from .seq_helpers import *  # noqa
