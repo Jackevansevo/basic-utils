@@ -1,8 +1,7 @@
-from os import name, system
-
 from functools import reduce
 from itertools import chain
 from operator import attrgetter
+from os import name, system
 from typing import Any, List, Sequence, Tuple
 
 __all__ = [
