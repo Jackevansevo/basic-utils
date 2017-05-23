@@ -12,7 +12,7 @@ from basic_utils.seq_helpers import (
     partial_flatten,
     rest,
     reverse,
-    second,
+    second
 )
 
 
