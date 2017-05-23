@@ -7,4 +7,4 @@ fi
 
 set -x
 
-${PREFIX}pytest --ignore venv --cov=basic_utils --cov-report=term-missing ${@}
+${PREFIX}pytest --cov=basic_utils ${@}
