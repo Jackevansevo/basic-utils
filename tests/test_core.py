@@ -6,7 +6,6 @@ from basic_utils.core import (
     clear,
     getattrs,
     map_getattr,
-    recursive_default_dict,
     rgetattr,
     rsetattr,
     slurp,
@@ -58,14 +57,6 @@ def test_map_getattr() -> None:
     objectX = Mock(forename='Homer')  # type: ignore
     objectY = Mock(forename='Bart')  # type: ignore
     assert map_getattr('forename', (objectX, objectY)) == ('Homer', 'Bart')
-
-
-def test_recursive_default_dict() -> None:
-    """
-    Tests that recursive data structure points to itself
-    """
-    my_dict = recursive_default_dict()
-    assert isinstance(my_dict['random_key'], type(my_dict))
 
 
 class TestRecursiveGettersAndSetters:

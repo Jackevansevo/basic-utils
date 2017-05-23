@@ -1,14 +1,13 @@
 from os import name, system
 
-from collections import defaultdict
 from functools import reduce
 from itertools import chain
 from operator import attrgetter
 from typing import Any, List, Sequence, Tuple
 
 __all__ = [
-    'clear', 'getattrs', 'map_getattr', 'recursive_default_dict', 'rgetattr',
-    'rsetattr', 'slurp', 'to_string',
+    'clear', 'getattrs', 'map_getattr', 'rgetattr', 'rsetattr', 'slurp',
+    'to_string',
 ]
 
 
@@ -48,11 +47,6 @@ def map_getattr(attr: str, object_seq: Sequence[object]) -> Tuple[Any, ...]:
     Returns a map to retrieve a single attribute from a sequence of objects
     """
     return tuple(map(attrgetter(attr), object_seq))
-
-
-def recursive_default_dict() -> defaultdict:
-    """Returns a default dict that points to itself"""
-    return defaultdict(recursive_default_dict)
 
 
 def rgetattr(obj: object, attrs: str) -> Any:
