@@ -32,10 +32,10 @@ def test_clear(platform: str, expected: str) -> None:
     Tests that os.system is called with the correct string corresponding to
     the host OS name
     """
-    with patch('basic_utils.core.os') as mock_os:
-        mock_os.name = platform
-        clear()
-        mock_os.system.assert_called_once_with(expected)
+    with patch('basic_utils.core.name', platform):
+        with patch('basic_utils.core.system') as mock_system:
+            clear()
+            mock_system.assert_called_once_with(expected)
 
 
 def test_to_string() -> None:

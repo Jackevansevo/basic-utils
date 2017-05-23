@@ -1,4 +1,5 @@
-import os
+from os import name, system
+
 from collections import defaultdict
 from functools import reduce
 from itertools import chain
@@ -24,7 +25,7 @@ def clear() -> None:
     """
     Clears the terminal screen from python, operating system agnostic
     """
-    os.system('cls' if os.name == 'nt' else 'clear')
+    system('cls' if name == 'nt' else 'clear')
 
 
 def to_string(objects: List[object], sep: str = ", ") -> str:
