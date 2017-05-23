@@ -1,3 +1,5 @@
 [run]
-source = basic_utils
+branch = True
 
+[report]
+show_missing = True
