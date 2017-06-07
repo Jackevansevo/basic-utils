@@ -10,7 +10,7 @@ __all__ = [
 ]
 
 
-def get_keys(d: dict, keys: Sequence[str], default: Callable=None) -> Tuple:
+def get_keys(d: dict, keys: Sequence[Any], default: Callable=None) -> Tuple:
     """
     Returns multiple values for keys in a dictionary
 
