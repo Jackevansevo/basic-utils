@@ -61,13 +61,23 @@ def set_in_dict(d: dict, keys: Sequence[str], value: Any) -> None:
     get_in_dict(d, butlast(keys))[last(keys)] = value
 
 
-def prune_dict(d: dict, key: Callable=lambda x: x is not None) -> dict:
+def prune_dict(d: dict) -> dict:
     """
-    Returns new dictionary with values filtered by key fn.
-    Prunes None values by default
+    Returns new dictionary with falesly values removed.
+    """
+    return filter_values(d, lambda x: x is not None)
+
+
+def filter_keys(d: dict, key: Callable) -> dict:
+    return {k: v for k, v in d.items() if key(k)}
+
+
+def filter_values(d: dict, key: Callable) -> dict:
+    """
+    Returns a new dictionary with values matching predicate.
 
     >>> d = {'Homer': 39, 'Marge': 36, 'Bart': 10}
-    >>> prune_dict(d, key=lambda x: x < 20)
+    >>> filter_values(d, key=lambda x: x < 20)
     {'Bart': 10}
     """
     return {k: v for k, v in d.items() if key(v)}

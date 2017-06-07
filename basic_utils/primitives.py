@@ -1,12 +1,29 @@
 from functools import reduce
 from operator import not_
-from typing import Any, Callable
+from typing import Any, Callable, Iterator
 
 __all__ = [
-    'comp', 'complement', 'compose', 'dec', 'even', 'identity', 'inc', 'odd'
+    'comp', 'complement', 'compose', 'dec', 'even', 'identity', 'inc',
+    'natural_nums', 'odd',
 ]
 
 sentinel = object()
+
+
+def natural_nums(start: int=0, end: int=None) -> Iterator[int]:
+    """
+    Yields a lazy sequence of natural numbers
+
+    >>> from itertools import islice
+    >>> list(islice(natural_nums(5), 3))
+    [5, 6, 7]
+    """
+
+    while True:
+        yield start
+        start += 1
+        if start == end:
+            break
 
 
 def identity(x: Any) -> Any:
