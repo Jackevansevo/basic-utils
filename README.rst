@@ -30,14 +30,16 @@ Install through PyPi with the following::
 
     pip3 install basic-utils
 
-Tests
-=====
+Running Tests
+=============
 
 (Optional) Create a virtualenv:
 
 .. code-block:: bash
 
     python3 -m venv venv
+
+Activate the virtualenv
 
 .. code-block:: bash
 
@@ -55,7 +57,7 @@ Install requirements and run:
 
     pytest
 
-To get get coverage (including branch coverage):
+To get test coverage:
 
 .. code-block:: bash
 
