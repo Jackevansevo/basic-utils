@@ -15,7 +15,7 @@ from basic_utils.primitives import (
 from basic_utils.seq_helpers import take
 
 
-def test_natural_nums():
+def test_natural_nums() -> None:
     assert take(3, natural_nums(7)) == [7, 8, 9]
     assert take(5, natural_nums(1, 4)) == [1, 2, 3]
     assert take(2, natural_nums(1, 4)) == [1, 2]
