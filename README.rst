@@ -18,8 +18,6 @@ Basic utils
 Useful utilities for Python 3.4+
 
 
-Currently alpha, (so use at your own risk)
-
 Documentation
 =============
 
@@ -35,10 +33,30 @@ Install through PyPi with the following::
 Tests
 =====
 
-Install requirements and run ::
+(Optional) Create a virtualenv:
+
+.. code-block:: bash
+
+    python3 -m venv venv
+
+.. code-block:: bash
+
+    venv/bin/activate
+
+Install requirements
+
+.. code-block:: bash
+    
+    pip install -e ."[test]"
+
+Install requirements and run:
+
+.. code-block:: bash
 
     pytest
 
-To get get coverage (including branch coverage) ::
+To get get coverage (including branch coverage):
 
-    coverage run --branch -m pytest && coverage report -m
+.. code-block:: bash
+
+    scripts/test
