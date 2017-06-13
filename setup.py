@@ -10,7 +10,6 @@ here = path.abspath(path.dirname(__file__))
 with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
     long_description = f.read()
 
-
 test_requirements = [
     'pytest',
     'pytest-cov',
@@ -37,12 +36,12 @@ setup(
     author_email='jack@evans.gb.net',
     license='MIT',
     classifiers=[
-            'Development Status :: 3 - Alpha',
-            'Intended Audience :: Developers',
-            'Topic :: Utilities',
-            'License :: OSI Approved :: MIT License',
-            'Programming Language :: Python :: 3.5',
-            'Programming Language :: Python :: 3.6',
+        'Development Status :: 3 - Alpha',
+        'Intended Audience :: Developers',
+        'Topic :: Utilities',
+        'License :: OSI Approved :: MIT License',
+        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
     ],
     keywords='utils utilities',
     packages=['basic_utils'],
@@ -51,5 +50,4 @@ setup(
     extras_require={
         'dev': list(chain(dev_requirements, test_requirements)),
         'test': test_requirements,
-    }
-)
+    })
