@@ -1,0 +1,10 @@
+#!/bin/sh -e
+
+export PREFIX=""
+if [ -d 'venv' ] ; then
+    export PREFIX="venv/bin/"
+fi
+
+set -x
+
+${PREFIX}sphinx-autobuild docs docs/_build/html -p 8080
