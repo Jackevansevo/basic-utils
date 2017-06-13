@@ -21,7 +21,9 @@ Useful utilities for Python 3.4+
 Documentation
 =============
 
-See available utilities by reading the docs here: `<http://basic-utils.readthedocs.io/en/latest/?badge=latest>`_
+See what's available by reading the docs here_
+
+.. _here: http://basic-utils.readthedocs.io/en/latest/?badge=latest
 
 Installation
 =============
@@ -29,6 +31,33 @@ Installation
 Install through PyPi with the following::
 
     pip3 install basic-utils
+
+
+FAQ
+===
+
+Q: Does anyone use this?
+
+A: Not that I know of
+
+Q: Should I use this?
+
+A: Sure (but at your own risk)
+
+Q: Why doesn't have X
+
+A: Open an issue or Pull request
+
+
+Similar Projects
+================
+
+- Toolz_
+- UnderScoreJS_
+
+.. _Toolz: https://github.com/pytoolz/toolz
+.. _UnderScoreJS: https://github.com/jashkenas/underscore
+
 
 Running Tests
 =============
@@ -48,7 +77,7 @@ Activate the virtualenv
 Install requirements
 
 .. code-block:: bash
-    
+
     pip install -e ."[test]"
 
 Install requirements and run:
