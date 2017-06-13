@@ -11,4 +11,4 @@ from .dict_helpers import *  # noqa
 from .primitives import *  # noqa
 from .seq_helpers import *  # noqa
 
-__version__ = '1.5.1'
+__version__ = '1.6.0'
