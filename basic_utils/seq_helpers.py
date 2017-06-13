@@ -1,9 +1,27 @@
-from itertools import chain
+from functools import reduce
+from itertools import chain, groupby, islice
+from operator import itemgetter
 from typing import Any, Callable, Iterable, Sequence
 
 __all__ = [
-    'butlast', 'concat', 'cons', 'dedupe', 'first', 'flatten', 'head', 'init',
-    'last', 'partial_flatten', 'rest', 'reverse', 'tail'
+    'all_equal',
+    'butlast',
+    'concat',
+    'cons',
+    'dedupe',
+    'first',
+    'flatten',
+    'head',
+    'init',
+    'last',
+    'nth',
+    'partial_flatten',
+    'quantify',
+    'rest',
+    'reverse',
+    'sorted_index',
+    'tail',
+    'take',
 ]
 
 
