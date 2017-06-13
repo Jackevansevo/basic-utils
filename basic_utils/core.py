@@ -5,7 +5,12 @@ from os import name, system
 from typing import Any, List, Sequence, Tuple
 
 __all__ = [
-    'clear', 'getattrs', 'map_getattr', 'rgetattr', 'rsetattr', 'slurp',
+    'clear',
+    'getattrs',
+    'map_getattr',
+    'rgetattr',
+    'rsetattr',
+    'slurp',
     'to_string',
 ]
 
@@ -26,7 +31,7 @@ def clear() -> None:
     system('cls' if name == 'nt' else 'clear')
 
 
-def to_string(objects: List[object], sep: str = ", ") -> str:
+def to_string(objects: List[object], sep: str=", ") -> str:
     """
     Converts a list of objects into a single string
 

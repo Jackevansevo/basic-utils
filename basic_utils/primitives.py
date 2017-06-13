@@ -3,8 +3,15 @@ from operator import not_
 from typing import Any, Callable, Iterator
 
 __all__ = [
-    'comp', 'complement', 'compose', 'dec', 'even', 'identity', 'inc',
-    'natural_nums', 'odd',
+    'comp',
+    'complement',
+    'compose',
+    'dec',
+    'even',
+    'identity',
+    'inc',
+    'natural_nums',
+    'odd',
 ]
 
 sentinel = object()

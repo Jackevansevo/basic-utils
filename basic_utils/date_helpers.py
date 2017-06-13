@@ -4,7 +4,6 @@ from typing import Iterator, NamedTuple, Tuple
 
 __all__ = ['dates_between', 'date_ranges_overlap']
 
-
 DatePair = Tuple[datetime, datetime]
 
 DateRange = NamedTuple('DateRange', [('start', datetime), ('end', datetime)])
