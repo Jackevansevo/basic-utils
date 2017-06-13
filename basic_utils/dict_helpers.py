@@ -68,29 +68,28 @@ def prune_dict(d: dict) -> dict:
     """
     Returns new dictionary with falesly values removed.
 
-    >>> d = {'Homer': 39, 'Marge': 36, 'Bart': 10}
-    >>> filter_values(d, key=lambda x: x < 20)
-    {'Bart': 10}
+    >>> prune_dict({'a': [], 'b': 2, 'c': False})
+    {'b': 2}
     """
     return filter_values(d, lambda x: bool(x))
 
 
-def filter_keys(d: dict, filter_fn: Callable) -> dict:
+def filter_keys(d: dict, predicate: Callable) -> dict:
     """
-    Returns new dictionary with keys matching predicate.
+    Returns new subset dict of d where keys pass predicate fn
 
-    >>> filter_keys({'Lisa': 8, 'Marge': 36}, key=lambda x: len(x) > 4)
+    >>> filter_keys({'Lisa': 8, 'Marge': 36}, lambda x: len(x) > 4)
     {'Marge': 36}
     """
-    return {k: v for k, v in d.items() if filter_fn(k)}
+    return {k: v for k, v in d.items() if predicate(k)}
 
 
-def filter_values(d: dict, filter_fn: Callable) -> dict:
+def filter_values(d: dict, predicate: Callable) -> dict:
     """
-    Returns a new dictionary with values matching predicate.
+    Returns new subset dict of d where values pass predicate fn
 
     >>> d = {'Homer': 39, 'Marge': 36, 'Bart': 10}
-    >>> filter_values(d, key=lambda x: x < 20)
+    >>> filter_values(d, lambda x: x < 20)
     {'Bart': 10}
     """
-    return {k: v for k, v in d.items() if filter_fn(v)}
+    return {k: v for k, v in d.items() if predicate(v)}
