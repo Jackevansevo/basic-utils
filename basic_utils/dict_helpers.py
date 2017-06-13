@@ -4,9 +4,12 @@ from typing import Any, Callable, Sequence, Tuple
 
 from basic_utils.seq_helpers import butlast, last
 
-
 __all__ = [
-    'dict_subset', 'get_in_dict', 'get_keys', 'prune_dict', 'set_in_dict',
+    'dict_subset',
+    'get_in_dict',
+    'get_keys',
+    'prune_dict',
+    'set_in_dict',
 ]
 
 
