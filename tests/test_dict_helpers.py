@@ -5,7 +5,6 @@ from typing import Any
 import pytest  # type: ignore
 
 from basic_utils.dict_helpers import (
-    dict_subset,
     filter_keys,
     filter_values,
     get_in_dict,
@@ -14,17 +13,6 @@ from basic_utils.dict_helpers import (
     set_in_dict
 )
 from basic_utils.primitives import even
-
-
-@pytest.mark.parametrize("args, expected", [
-    ((('a', 'b', 'c'), False, None), {'a': 1, 'b': 2, 'c': 3}),
-    ((('a', 'b', 'z'), True, None), {'a': 1, 'b': 2}),
-    ((('a', 'b', 'z'), False, None), {'a': 1, 'b': 2, 'z': None}),
-    ((('a', 'b', 'z'), False, 'Missing'), {'a': 1, 'b': 2, 'z': 'Missing'}),
-])
-def test_dict_subset(args: Any, expected: Any) -> None:
-    d = {'a': 1, 'b': 2, 'c': 3}
-    assert dict_subset(d, *args) == expected
 
 
 @pytest.mark.parametrize("data, keys, expected", [

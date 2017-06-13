@@ -5,7 +5,6 @@ from typing import Any, Callable, Sequence, Tuple
 from basic_utils.seq_helpers import butlast, last
 
 __all__ = [
-    'dict_subset',
     'get_in_dict',
     'get_keys',
     'prune_dict',
@@ -24,21 +23,6 @@ def get_keys(d: dict, keys: Sequence[Any], default: Callable=None) -> Tuple:
     (24, 25, None)
     """
     return tuple(d.get(key, default) for key in keys)
-
-
-def dict_subset(d, keys, prune=False, default=None):
-    # type: (dict, Sequence[str], bool, Callable) -> dict
-    """
-    Returns a new dictionary with a subset of key value pairs from the original
-
-    >>> d = {'a': 1, 'b': 2}
-    >>> dict_subset(d, ('c',), True, 'missing')
-    {'c': 'missing'}
-    """
-    new = {k: d.get(k, default) for k in keys}
-    if prune:
-        return prune_dict(new)
-    return new
 
 
 def get_in_dict(d: dict, keys: Sequence[str]) -> Any:
