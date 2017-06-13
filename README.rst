@@ -44,9 +44,9 @@ Q: Should I use this?
 
 A: Sure (but at your own risk)
 
-Q: Why doesn't have X
+Q: Why doesn't this have X?
 
-A: Open an issue or Pull request
+A: Open an issue or submit a pull request
 
 
 Similar Projects
