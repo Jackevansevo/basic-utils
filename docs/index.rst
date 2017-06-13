@@ -5,6 +5,7 @@ Basic utils documentation
 
    core
    date_helpers
+   dict_helpes
    dictionary_helpers
    seq_helpers
    primitives
