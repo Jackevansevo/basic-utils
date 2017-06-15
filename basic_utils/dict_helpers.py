@@ -55,7 +55,7 @@ def prune_dict(d: dict) -> dict:
     >>> prune_dict({'a': [], 'b': 2, 'c': False})
     {'b': 2}
     """
-    return filter_values(d, lambda x: bool(x))
+    return filter_values(d, bool)
 
 
 def filter_keys(d: dict, predicate: Callable) -> dict:
