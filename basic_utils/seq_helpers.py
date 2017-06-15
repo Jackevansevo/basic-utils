@@ -167,7 +167,7 @@ def concat(seqX: Sequence, seqY: Sequence) -> Sequence:
     (1, 2, 3, 4, 5, 6)
     """
     chained = chain(seqX, seqY)
-    if type(seqX) == type(seqY):
+    if isinstance(seqX, type(seqY)):
         return type(seqX)(chained)  # type: ignore
     return list(chained)
 
