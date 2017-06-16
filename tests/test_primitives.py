@@ -1,3 +1,5 @@
+from hypothesis import given
+from hypothesis.strategies import integers, sampled_from
 from typing import Any, Tuple
 
 import pytest  # type: ignore
@@ -41,10 +43,21 @@ def test_complement() -> None:
     assert fn('grapple')
 
 
-def test_primitives() -> None:
-    assert inc(1) == 2
-    assert dec(2) == 1
-    assert even(2)
-    assert not even(1)
-    assert odd(1)
-    assert not odd(2)
+@given(integers())
+def test_inc(i: int) -> None:
+    assert inc(i) == i + 1
+
+
+@given(integers())
+def test_dec(i: int) -> None:
+    assert dec(i) == i - 1
+
+
+@given(integers())
+def test_odd(i: int) -> None:
+    assert odd(i) == bool(i % 2 != 0)
+
+
+@given(integers())
+def test_even(i: int) -> None:
+    assert even(i) == bool(i % 2 == 0)
