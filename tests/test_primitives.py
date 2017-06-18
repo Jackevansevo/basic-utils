@@ -1,8 +1,8 @@
-from hypothesis import given
-from hypothesis.strategies import integers
 from typing import Any, Tuple
 
 import pytest  # type: ignore
+from hypothesis import given  # type: ignore
+from hypothesis.strategies import integers  # type: ignore
 
 from basic_utils.primitives import (
     comp,
