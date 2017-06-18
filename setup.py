@@ -17,7 +17,7 @@ test_requirements = [
 ]
 
 dev_requirements = [
-    'yapf',
+    'autopep8'
     'flake8',
     'isort',
     'mypy',
