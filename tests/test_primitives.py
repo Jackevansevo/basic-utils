@@ -1,5 +1,5 @@
 from hypothesis import given
-from hypothesis.strategies import integers, sampled_from
+from hypothesis.strategies import integers
 from typing import Any, Tuple
 
 import pytest  # type: ignore
