@@ -1,6 +1,6 @@
 flake8==3.3.0
 hypothesis==3.12.0
-isort
+isort==4.2.15
 mypy
 pytest
 pytest-cov
