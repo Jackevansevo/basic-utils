@@ -1,5 +1,5 @@
 flake8==3.3.0
-hypothesis
+hypothesis==3.12.0
 isort
 mypy
 pytest
